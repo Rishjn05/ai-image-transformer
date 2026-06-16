@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-
+from app.api.prompt import router as prompt_router
 from app.api.generate import router
 
 app = FastAPI(
@@ -26,3 +26,5 @@ def home():
         "status": "running",
         "message": "AI Image Transformer API"
     }
+
+app.include_router(prompt_router)
